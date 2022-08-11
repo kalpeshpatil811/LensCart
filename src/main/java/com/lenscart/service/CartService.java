@@ -25,8 +25,9 @@ public class CartService implements ICartService {
 	}
 
 	@Override
-	public void removeFromCart(int itemId) {
+	public List<Cart> removeFromCart(int itemId) {
 		cartRepo.deleteById(itemId);
+		return cartRepo.findAll();
 	}
 
 }
