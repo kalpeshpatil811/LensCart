@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "sunGlasses")
@@ -15,27 +17,35 @@ public class SunGlasses {
 	private int sunGlassId;
 
 	@Column(name = "sunGlassName")
+	@NotBlank(message = "Sunglass name should not be empty")
 	private String sunGlassName;
 
 	@Column(name = "brand")
+	@NotBlank(message = "Sunglass brand should not be empty")
 	private String brand;
 
 	@Column(name = "price")
+	@NotNull(message = "Sunglass price should not be empty")
 	private double price;
 
 	@Column(name = "frameColor")
+	@NotBlank(message = "Sunglass frame color should not be empty")
 	private String frameColor;
 
 	@Column(name = "frameShape")
+	@NotBlank(message = "Sunglass frame shape should not be empty")
 	private String frameShape;
 
 	@Column(name = "glassColor")
+	@NotBlank(message = "Sunglass glass color should not be empty")
 	private String glassColor;
 
 	@Column(name = "weight")
+	@NotNull(message = "Sunglass weight should not be empty")
 	private double weight;
 
 	@Column(name = "image")
+	@NotBlank(message = "Sunglass image should not be empty")
 	private String image;
 
 	public SunGlasses() {

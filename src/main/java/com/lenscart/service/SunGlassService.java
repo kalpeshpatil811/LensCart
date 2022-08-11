@@ -34,21 +34,23 @@ public class SunGlassService implements ISunGlassService {
 	}
 
 	@Override
-	public SunGlasses getSunGlassById(Integer sunGlassId) throws IdNotFoundException {
-		SunGlasses sunGlass = sunGlassRepo.findById(sunGlassId).get();
-		if (sunGlass == null) {
-			throw new IdNotFoundException("Enter correct product Id");
+	public SunGlasses getSunGlassById(int sunGlassId) throws IdNotFoundException {
+		try {
+			SunGlasses sunGlass = sunGlassRepo.findById(sunGlassId).get();
+			return sunGlass;
+		} catch (Exception e) {
+			throw new IdNotFoundException("Id is not present, enter correct Id");
 		}
-		return sunGlass;
 	}
 
 	@Override
-	public void deleteSunGlass(Integer sunGlassId) throws NoSuchProductFoundException {
-		SunGlasses sunGlass = sunGlassRepo.findById(sunGlassId).get();
-		if (sunGlass == null) {
-			throw new NoSuchProductFoundException("No such product exist");
+	public List<SunGlasses> deleteSunGlass(int sunGlassId) throws NoSuchProductFoundException {
+		try {
+			sunGlassRepo.deleteById(sunGlassId);
+			return sunGlassRepo.findAll();
+		} catch (Exception e) {
+			throw new NoSuchProductFoundException("No such product exists");
 		}
-		sunGlassRepo.deleteById(sunGlassId);
 	}
 
 	@Override

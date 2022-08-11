@@ -2,6 +2,8 @@ package com.lenscart.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -32,25 +34,26 @@ public class SunGlassController {
 	}
 
 	@GetMapping("sunglass/{sunglassId}")
-	public ResponseEntity<SunGlasses> getSunGlassById(@PathVariable("sunglassId") Integer sunglassId)
+	public ResponseEntity<SunGlasses> getSunGlassById(@PathVariable("sunglassId") int sunglassId)
 			throws IdNotFoundException {
 		return new ResponseEntity<SunGlasses>(sunglassService.getSunGlassById(sunglassId), HttpStatus.OK);
 	}
 
 	@PostMapping("sunglass")
-	public ResponseEntity<SunGlasses> addSunGlass(@RequestBody SunGlasses sunGlass) throws InvalidProductDataException {
+	public ResponseEntity<SunGlasses> addSunGlass(@Valid @RequestBody SunGlasses sunGlass)
+			throws InvalidProductDataException {
 		return new ResponseEntity<SunGlasses>(sunglassService.addSunGlass(sunGlass), HttpStatus.OK);
 	}
 
 	@DeleteMapping("sunglass/{sunglassId}")
-	public ResponseEntity<SunGlasses> deleteSunGlass(@PathVariable("sunglassId") Integer sunglassId)
+	public ResponseEntity<List<SunGlasses>> deleteSunGlass(@PathVariable("sunglassId") int sunglassId)
 			throws NoSuchProductFoundException {
-		sunglassService.deleteSunGlass(sunglassId);
-		return new ResponseEntity<>(null, HttpStatus.OK);
+		List<SunGlasses> sunglassList = sunglassService.deleteSunGlass(sunglassId);
+		return new ResponseEntity<List<SunGlasses>>(sunglassList, HttpStatus.OK);
 	}
 
 	@PutMapping("sunglass")
-	public ResponseEntity<SunGlasses> updateSunGlass(@RequestBody SunGlasses sunGlass)
+	public ResponseEntity<SunGlasses> updateSunGlass(@Valid @RequestBody SunGlasses sunGlass)
 			throws InvalidProductDataException {
 		return new ResponseEntity<SunGlasses>(sunglassService.updateSunGlass(sunGlass), HttpStatus.OK);
 	}

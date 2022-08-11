@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "cart")
@@ -15,12 +17,15 @@ public class Cart {
 	private int itemId;
 
 	@Column(name = "name")
+	@NotBlank(message = "Cart item name should not be empty")
 	private String name;
 
 	@Column(name = "brand")
+	@NotBlank(message = "Cart item brand should not be empty")
 	private String brand;
 
 	@Column(name = "price")
+	@NotNull(message = "Cart item price should not be empty")
 	private double price;
 
 	public Cart() {

@@ -2,6 +2,8 @@ package com.lenscart.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -28,13 +30,13 @@ public class CartController {
 	}
 
 	@PostMapping("cart")
-	public ResponseEntity<Cart> addToCart(@RequestBody Cart cartItem) {
+	public ResponseEntity<Cart> addToCart(@Valid @RequestBody Cart cartItem) {
 		return new ResponseEntity<Cart>(cartService.addToCart(cartItem), HttpStatus.OK);
 	}
 
 	@DeleteMapping("cart/{itemId}")
-	public ResponseEntity<Cart> removeFromCart(@PathVariable("itemId") int itemId) {
-		cartService.removeFromCart(itemId);
-		return new ResponseEntity<>(null, HttpStatus.OK);
+	public ResponseEntity<List<Cart>> removeFromCart(@PathVariable("itemId") int itemId) {
+		List<Cart> cartList = cartService.removeFromCart(itemId);
+		return new ResponseEntity<List<Cart>>(cartList, HttpStatus.OK);
 	}
 }

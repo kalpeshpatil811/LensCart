@@ -14,9 +14,9 @@ public interface ISunGlassService {
 
 	public List<SunGlasses> getAllSunGlasses();
 
-	public SunGlasses getSunGlassById(Integer sunGlassId) throws IdNotFoundException;
+	public SunGlasses getSunGlassById(int sunGlassId) throws IdNotFoundException;
 
-	public void deleteSunGlass(Integer productId) throws NoSuchProductFoundException;
+	public List<SunGlasses> deleteSunGlass(int productId) throws NoSuchProductFoundException;
 
 	public SunGlasses addSunGlass(SunGlasses sunGlass) throws InvalidProductDataException;
 

@@ -13,6 +13,6 @@ public interface ICartService {
 
 	public Cart addToCart(Cart cartItem);
 
-	public void removeFromCart(int itemId);
+	public List<Cart> removeFromCart(int itemId);
 
 }
