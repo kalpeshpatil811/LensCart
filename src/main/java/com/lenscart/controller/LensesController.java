@@ -2,6 +2,8 @@ package com.lenscart.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,6 +17,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.lenscart.entity.Lenses;
+import com.lenscart.exception.IdNotFoundException;
+import com.lenscart.exception.InvalidProductDataException;
 import com.lenscart.service.ILensesService;
 
 @RestController
@@ -29,24 +33,24 @@ public class LensesController {
 	}
 
 	@GetMapping("/lenses/{lensId}")
-	public ResponseEntity<Lenses> getLensById(@PathVariable("lensId") Integer lensId) {
+	public ResponseEntity<Lenses> getLensById(@PathVariable("lensId") Integer lensId) throws IdNotFoundException {
 		return new ResponseEntity<Lenses>(lensService.getLensById(lensId), HttpStatus.OK);
 	}
 
 	@PostMapping("/lenses")
-	public ResponseEntity<Lenses> addLenses(@RequestBody Lenses lens) {
+	public ResponseEntity<Lenses> addLenses(@Valid @RequestBody Lenses lens) throws InvalidProductDataException {
 		lensService.addLens(lens);
 		return new ResponseEntity<Lenses>(lens, HttpStatus.OK);
 	}
 	
 	@DeleteMapping("/lenses/{lensId}")
-	public ResponseEntity<Lenses> deleteLens(@PathVariable("lensId") Integer lensId) {
+	public ResponseEntity<List<Lenses>> deleteLens(@PathVariable("lensId") Integer lensId) throws IdNotFoundException {
 		lensService.deleteLens(lensId);
-		return new ResponseEntity<>(null, HttpStatus.OK);
+		return new ResponseEntity<List<Lenses>>(lensService.getAllLenses(), HttpStatus.OK);
 	}
 	
 	@PutMapping("/lenses")
-	public ResponseEntity<Lenses> updateLens(@RequestBody Lenses lens) {
+	public ResponseEntity<Lenses> updateLens(@Valid @RequestBody Lenses lens) throws InvalidProductDataException {
 		return new ResponseEntity<Lenses>(lensService.updateLens(lens), HttpStatus.OK);
 	}
 }

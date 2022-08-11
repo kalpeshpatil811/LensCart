@@ -5,6 +5,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name="lenses")
@@ -17,31 +20,32 @@ public class Lenses {
 	private int lensId;
 	
 	@Column(name = "brand")
+	@NotEmpty(message = "Lens brand should not be blank.")
 	private String brand;
 	
 	@Column(name = "lensImage")
+	@NotBlank(message = "Please provide image URL.")
 	private String lensImage;
 	
 	@Column(name = "shape")
+	@NotEmpty(message = "Lens shape should not be blank.")
 	private String shape;
 	
 	@Column(name = "color")
+	@NotEmpty(message = "Lens color should not be blank.")
 	private String color;
 	
 	@Column(name = "price")
+	@NotNull(message = "Price should not be Null")
 	private double price;
 	
-	@Column(name = "quantity")
-	private int quantity;
-
 
 public Lenses() {
 	super();
 }
 
 
-public Lenses(int lensId, String brand, String lensImage, String shape, String color, double price,
-		int quantity) {
+public Lenses(int lensId, String brand, String lensImage, String shape, String color, double price) {
 	super();
 	this.lensId = lensId;
 	this.brand = brand;
@@ -49,7 +53,7 @@ public Lenses(int lensId, String brand, String lensImage, String shape, String c
 	this.shape = shape;
 	this.color = color;
 	this.price = price;
-	this.quantity = quantity;
+//	this.quantity = quantity;
 }
 
 
@@ -100,13 +104,13 @@ public void setPrice(double price) {
 	this.price = price;
 }
 
-public int getQuantity() {
-	return quantity;
-}
-
-public void setQuantity(int quantity) {
-	this.quantity = quantity;
-}
+//public int getQuantity() {
+//	return quantity;
+//}
+//
+//public void setQuantity(int quantity) {
+//	this.quantity = quantity;
+//}
 
 //@Override
 //public String toString() {
