@@ -1,13 +1,13 @@
 package com.lenscart.exception;
 
-public class NoSuchProductFoundException extends Exception {
+public class NoSuchFrameFoundException extends Exception {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public NoSuchProductFoundException(String message) {
+	public NoSuchFrameFoundException(String message) {
 		super(message);
 	}
 

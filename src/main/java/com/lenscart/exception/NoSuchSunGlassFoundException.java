@@ -1,13 +1,13 @@
 package com.lenscart.exception;
 
-public class InvalidProductDataException extends Exception {
+public class NoSuchSunGlassFoundException extends Exception {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public InvalidProductDataException(String message) {
+	public NoSuchSunGlassFoundException(String message) {
 		super(message);
 	}
 
