@@ -8,7 +8,6 @@ public class LensCartApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(LensCartApplication.class, args);
-		System.out.println("Server Started...");
 	}
 
 }
