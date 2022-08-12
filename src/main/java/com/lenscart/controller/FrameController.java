@@ -1,6 +1,5 @@
 package com.lenscart.controller;
 
-
 import java.util.List;
 
 import javax.validation.Valid;
@@ -8,6 +7,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,48 +22,44 @@ import com.lenscart.exception.InvalidFrameDataException;
 import com.lenscart.exception.NoSuchFrameFoundException;
 import com.lenscart.service.IFrameService;
 
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("/lenscart")
 public class FrameController {
-	
+
 	@Autowired
 	private IFrameService frameService;
-	
-	
-	//add new frame
+
+	// add new frame
 	@PostMapping("frame")
-	public ResponseEntity<Frames> addFrame(@Valid @RequestBody Frames frame) 
-			throws InvalidFrameDataException{
+	public ResponseEntity<Frames> addFrame(@Valid @RequestBody Frames frame) throws InvalidFrameDataException {
 		return new ResponseEntity<Frames>(frameService.addFrame(frame), HttpStatus.OK);
 	}
-	
-	//get all frame details
+
+	// get all frame details
 	@GetMapping("frame")
 	public ResponseEntity<List<Frames>> getAllFrames() {
 		return new ResponseEntity<List<Frames>>(frameService.getAllFrames(), HttpStatus.OK);
 	}
-	
-	
-	//get frame details by ID
+
+	// get frame details by ID
 	@GetMapping("frame/{frameId}")
-	public ResponseEntity<Frames> getFrameById(@PathVariable("frameId") int frameId)
-			throws FrameIdNotFoundException {
+	public ResponseEntity<Frames> getFrameById(@PathVariable("frameId") int frameId) throws FrameIdNotFoundException {
 		return new ResponseEntity<Frames>(frameService.getFrameById(frameId), HttpStatus.OK);
 	}
-	
-	//delete
+
+	// delete
 	@DeleteMapping("frame/{frameId}")
 	public ResponseEntity<List<Frames>> deleteFrame(@PathVariable("frameId") int frameId)
-			throws NoSuchFrameFoundException{
+			throws NoSuchFrameFoundException {
 		List<Frames> framelist = frameService.deleteFrame(frameId);
-		return new ResponseEntity<List<Frames>> (framelist,HttpStatus.OK);
+		return new ResponseEntity<List<Frames>>(framelist, HttpStatus.OK);
 	}
-	
-	//Update frame details
+
+	// Update frame details
 	@PutMapping("frame")
-	public ResponseEntity<Frames> updateFrame(@Valid @RequestBody Frames frame)
-			throws InvalidFrameDataException{
-		return new ResponseEntity<Frames> (frameService.updateFrame(frame),HttpStatus.OK);
+	public ResponseEntity<Frames> updateFrame(@Valid @RequestBody Frames frame) throws InvalidFrameDataException {
+		return new ResponseEntity<Frames>(frameService.updateFrame(frame), HttpStatus.OK);
 	}
-	
+
 }

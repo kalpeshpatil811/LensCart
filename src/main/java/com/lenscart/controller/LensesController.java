@@ -7,6 +7,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,6 +23,7 @@ import com.lenscart.exception.NoSuchLensFoundException;
 import com.lenscart.exception.InvalidLensDataException;
 import com.lenscart.service.ILensesService;
 
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("/lenscart")
 public class LensesController {
@@ -43,16 +45,16 @@ public class LensesController {
 		lensService.addLens(lens);
 		return new ResponseEntity<Lenses>(lens, HttpStatus.OK);
 	}
-	
+
 	@DeleteMapping("/lenses/{lensId}")
-	public ResponseEntity<List<Lenses>> deleteLens(@PathVariable("lensId") Integer lensId) throws NoSuchLensFoundException {
+	public ResponseEntity<List<Lenses>> deleteLens(@PathVariable("lensId") Integer lensId)
+			throws NoSuchLensFoundException {
 		lensService.deleteLens(lensId);
 		return new ResponseEntity<List<Lenses>>(lensService.getAllLenses(), HttpStatus.OK);
 	}
-	
+
 	@PutMapping("/lenses")
 	public ResponseEntity<Lenses> updateLens(@Valid @RequestBody Lenses lens) throws InvalidLensDataException {
 		return new ResponseEntity<Lenses>(lensService.updateLens(lens), HttpStatus.OK);
 	}
 }
-	
