@@ -3,6 +3,7 @@ package com.lenscart.service;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import com.lenscart.entity.Customer;
+import com.lenscart.exception.CustomerNameAlreadyExistException;
 import com.lenscart.exception.CustomerNotFoundException;
 import com.lenscart.exception.WrongPasswordException;
 import com.lenscart.repository.CustomerRepository;
@@ -29,15 +30,15 @@ public class CustomerServiceTest {
 
 	@BeforeEach
 	public void setUp() {
-		// Customer customer = new Customer();
 		customer.setCustomerName("Karan");
 		customer.setEmail("ram@gmail.com");
 		customer.setNumber("8765432098");
 		customer.setPassword("Ramayam@34");
+		customer.setAddress("Nanded");
 	}
 
 	@Test
-	public void testAddCustomer() {
+	public void testAddCustomer() throws CustomerNameAlreadyExistException {
 		Mockito.doReturn(customer).when(repository).save(Mockito.any());
 		assertEquals(customer.getCustomerName(), service.addCustomer(customer).getCustomerName());
 		assertEquals(customer.getEmail(), service.addCustomer(customer).getEmail());
@@ -47,7 +48,6 @@ public class CustomerServiceTest {
 	@Test
 	public void testGetCustomerByName() throws CustomerNotFoundException {
 		String customerName = "Karan";
-
 		Mockito.when(repository.findByCustomerName(customerName)).thenReturn(customer);
 		assertEquals(customerName, service.getCustomerByName(customerName).getCustomerName());
 
@@ -57,7 +57,6 @@ public class CustomerServiceTest {
 	public void testLogin() throws CustomerNotFoundException, WrongPasswordException {
 		String customerName = "Karan";
 		String password = "Ramayam@34";
-
 		Mockito.when(repository.findByCustomerName(customerName)).thenReturn(customer);
 		assertEquals(customerName, service.getCustomerByName(customerName).getCustomerName());
 		assertEquals(password, service.getCustomerByName(customerName).getPassword());

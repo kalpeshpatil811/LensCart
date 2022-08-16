@@ -30,4 +30,9 @@ public class CartService implements ICartService {
 		return cartRepo.findAll();
 	}
 
+	@Override
+	public List<Cart> getAllCartItemsByCustomerId(int customerId) {
+		return cartRepo.findAllByCustomerId(customerId);
+	}
+
 }

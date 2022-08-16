@@ -18,7 +18,6 @@ import com.lenscart.exception.FrameIdNotFoundException;
 import com.lenscart.exception.InvalidFrameDataException;
 import com.lenscart.exception.NoSuchFrameFoundException;
 import com.lenscart.repository.FrameRepository;
-import com.lenscart.service.FrameService;
 
 @SpringBootTest
 public class FrameServiceTest {

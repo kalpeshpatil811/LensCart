@@ -83,4 +83,9 @@ public class GlobalExceptionHandler {
 		return new ResponseEntity<Object>(exception.getMessage(), HttpStatus.NOT_FOUND);
 	}
 
+	@ExceptionHandler(value = CustomerNameAlreadyExistException.class)
+	public ResponseEntity<Object> handleCustomerNameAlreadyExistException(CustomerNameAlreadyExistException exception) {
+		return new ResponseEntity<Object>(exception.getMessage(), HttpStatus.CONFLICT);
+	}
+
 }

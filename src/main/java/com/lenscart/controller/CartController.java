@@ -41,4 +41,9 @@ public class CartController {
 		List<Cart> cartList = cartService.removeFromCart(itemId);
 		return new ResponseEntity<List<Cart>>(cartList, HttpStatus.OK);
 	}
+
+	@GetMapping("cart/{customerId}")
+	public ResponseEntity<List<Cart>> getAllCartItemsByCustomerId(@PathVariable("customerId") int customerId) {
+		return new ResponseEntity<List<Cart>>(cartService.getAllCartItemsByCustomerId(customerId), HttpStatus.OK);
+	}
 }
