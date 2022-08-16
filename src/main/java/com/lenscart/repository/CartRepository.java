@@ -9,6 +9,8 @@ import com.lenscart.entity.Cart;
 
 @Repository
 public interface CartRepository extends JpaRepository<Cart, Integer> {
-	
+
 	public List<Cart> findAllByCustomerId(int customerId);
+
+	public void deleteByCustomerId(int customerId);
 }

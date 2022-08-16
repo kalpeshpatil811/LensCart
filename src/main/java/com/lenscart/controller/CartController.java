@@ -42,6 +42,12 @@ public class CartController {
 		return new ResponseEntity<List<Cart>>(cartList, HttpStatus.OK);
 	}
 
+	@DeleteMapping("cart/c/{customerId}")
+	public ResponseEntity<String> removeAllByCustomerId(@PathVariable("customerId") int customerId) {
+		String response = cartService.removeAllByCustomerId(customerId);
+		return new ResponseEntity<String>(response, HttpStatus.OK);
+	}
+
 	@GetMapping("cart/{customerId}")
 	public ResponseEntity<List<Cart>> getAllCartItemsByCustomerId(@PathVariable("customerId") int customerId) {
 		return new ResponseEntity<List<Cart>>(cartService.getAllCartItemsByCustomerId(customerId), HttpStatus.OK);

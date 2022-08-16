@@ -17,4 +17,6 @@ public interface ICartService {
 
 	public List<Cart> getAllCartItemsByCustomerId(int customerId);
 
+	public String removeAllByCustomerId(int customerId);
+
 }
