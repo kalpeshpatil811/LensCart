@@ -15,4 +15,6 @@ public interface ICartService {
 
 	public List<Cart> removeFromCart(int itemId);
 
+	public List<Cart> getAllCartItemsByCustomerId(int customerId);
+
 }

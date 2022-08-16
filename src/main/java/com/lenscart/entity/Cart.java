@@ -28,16 +28,26 @@ public class Cart {
 	@NotNull(message = "Cart item price should not be empty")
 	private double price;
 
+	@Column(name = "image")
+	@NotBlank(message = "Cart image should not be empty")
+	private String image;
+
+	@Column(name = "customerId")
+	@NotNull(message = "Cart customer id should not be empty")
+	private int customerId;
+
 	public Cart() {
 		super();
 	}
 
-	public Cart(int itemId, String name, String brand, double price) {
+	public Cart(int itemId, String name, String brand, double price, String image, int customerId) {
 		super();
 		this.itemId = itemId;
 		this.name = name;
 		this.brand = brand;
 		this.price = price;
+		this.image = image;
+		this.customerId = customerId;
 	}
 
 	public int getItemId() {
@@ -70,6 +80,22 @@ public class Cart {
 
 	public void setPrice(double price) {
 		this.price = price;
+	}
+
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
+	}
+
+	public int getCustomerId() {
+		return customerId;
+	}
+
+	public void setCustomerId(int customerId) {
+		this.customerId = customerId;
 	}
 
 }

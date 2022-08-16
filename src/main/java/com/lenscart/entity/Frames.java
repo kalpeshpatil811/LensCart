@@ -46,6 +46,8 @@ public class Frames {
 	@NotBlank(message = "Frame size should not be null")
 	private String size;
 	
+	@Column(name="frameImage")	
+	@NotBlank(message = "Frame image should not be null")
 	private String frameImage;
 	
 	public Frames() {
