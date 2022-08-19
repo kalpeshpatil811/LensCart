@@ -10,13 +10,19 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
+/*********
+ * Lenses Entity Class
+ *
+ * Created By: Sachin Phatak
+ * Date: 08/08/2022
+ *********/
+
+
 @Entity
 @Table(name = "lenses")
-
 public class Lenses {
 	@Id
 	@GeneratedValue
-
 	@Column(name = "lensId")
 	private int lensId;
 

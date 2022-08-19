@@ -11,6 +11,13 @@ import com.lenscart.exception.InvalidLensDataException;
 import com.lenscart.exception.NoSuchLensFoundException;
 import com.lenscart.repository.LensesRepository;
 
+/*********
+ * Lenses Service Class
+ *
+ * Created By: Sachin Phatak
+ * Date: 10/08/2022
+*********/
+
 @Service
 public class LensesService implements ILensesService {
 

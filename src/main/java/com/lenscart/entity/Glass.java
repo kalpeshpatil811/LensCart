@@ -9,40 +9,45 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
+/***************************
+ * Glass Entity Class
+ *
+ * Created By: Disha Kale
+ * Date: 08/08/2022
+ ***************************/
 
 @Entity
-@Table(name="glass")
+@Table(name = "glass")
 public class Glass {
-	
+
 	@Id
 	@GeneratedValue
 	@Column(name = "glassId")
 	private int glassId;
-	
-	@NotEmpty(message="Glass name should not be blank.")
+
+	@NotEmpty(message = "Glass name should not be blank.")
 	@Column(name = "glassName")
 	private String glassName;
-	
-	@NotBlank(message="Glass brand should not be blank.")
+
+	@NotBlank(message = "Glass brand should not be blank.")
 	@Column(name = "brand")
 	private String brand;
-	
+
 	@Column(name = "price")
-	@NotNull(message="Glass Price should not be blank.")
+	@NotNull(message = "Glass Price should not be blank.")
 	private double price;
-	
-	@NotBlank(message="Glass type should not be blank.")
+
+	@NotBlank(message = "Glass type should not be blank.")
 	@Column(name = "type")
 	private String type;
-	
 
 	@Column(name = "powerRange")
 	private double powerRange;
-	
-	@NotBlank(message="Glass Image should not be blank.")
-	@Column(name="glassImage")
+
+	@NotBlank(message = "Glass Image should not be blank.")
+	@Column(name = "glassImage")
 	private String glassImage;
-	
+
 	public String getGlassImage() {
 		return glassImage;
 	}
@@ -51,9 +56,8 @@ public class Glass {
 		this.glassImage = glassImage;
 	}
 
-	public Glass()
-	{
-		
+	public Glass() {
+
 	}
 
 	public int getGlassId() {
@@ -103,7 +107,5 @@ public class Glass {
 	public void setPowerRange(double powerRange) {
 		this.powerRange = powerRange;
 	}
-	
-	
-	
+
 }

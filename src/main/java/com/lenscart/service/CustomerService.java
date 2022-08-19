@@ -12,6 +12,14 @@ import com.lenscart.exception.WrongPasswordException;
 import com.lenscart.exception.WrongUsernameAndPassword;
 import com.lenscart.repository.CustomerRepository;
 
+/*********
+ * Customer Service Class
+ *
+ * Created By: Akshata Gurupwar
+ * Date: 10/08/2022
+ *********/
+
+
 @Service
 public class CustomerService implements ICustomerService {
 
