@@ -8,6 +8,13 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
+/***************************
+ * Frame Entity Class
+ *
+ * Created By: Laxman Adkune
+ * Date: 08/08/2022
+ ***************************/
+
 @Entity
 @Table(name = "frames")
 public class Frames {

@@ -8,6 +8,13 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
+/***************************
+ * Cart Entity Class
+ *
+ * Created By: Kalpesh Patil
+ * Date: 08/08/2022
+ ***************************/
+
 @Entity
 @Table(name = "cart")
 public class Cart {

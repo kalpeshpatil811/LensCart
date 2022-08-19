@@ -10,6 +10,13 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+/***************************
+ * Customer Entity Class
+ *
+ * Created By: Akshata Gurupwar
+ * Date: 08/08/2022
+ ***************************/
+
 @Entity
 @Table(name = "customer")
 public class Customer {

@@ -8,6 +8,13 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
+/***************************
+ * Sun Glasses Entity Class
+ *
+ * Created By: Kalpesh Patil
+ * Date: 08/08/2022
+ ***************************/
+
 @Entity
 @Table(name = "sunGlasses")
 public class SunGlasses {
